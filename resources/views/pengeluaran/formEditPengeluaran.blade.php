@@ -1,4 +1,8 @@
-@extends('master.master')]
+@php
+    $modal = $total = $keuntungan = 0;
+@endphp
+
+@extends('master.master')
 
 @section('title')
     <h3>Edit Pengeluaran</h3>

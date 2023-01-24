@@ -1,6 +1,7 @@
 @php
     $modal = $total = $keuntungan = 0;
 @endphp
+
 @extends('master.master')
 
 @section('title')
@@ -11,7 +12,7 @@
     <nav aria-label="breadcrumb" class='breadcrumb-header text-right'>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('pembukuan.list') }}">Pembukuan</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('pembukuan.tambahPemasukan') }}">Form Tambah</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('pembukuan.tambahPemasukan') }}">Tambah Pemasukan</a></li>
         </ol>
     </nav>
 @endsection
@@ -192,7 +193,7 @@
                                     <div class="form-group">
                                         <label for="">Status</label>
                                         <div class="form-check">
-                                            <input class="" type="radio" name="status" id="" value=1>
+                                            <input class="" type="radio" name="status" id="" selected value=1 >
                                             <label class="" for="">
                                                 Lunas
                                             </label>

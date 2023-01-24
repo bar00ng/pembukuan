@@ -11,7 +11,7 @@ class OutcomeController extends Controller
 {
     public function store(Request $r) {
         $cart = session()->get('daftarPengeluaran');
-        $productId = array_keys($cart);
+        
        
         $validated = $r->validate([
             'hargaModal' => 'required',
@@ -21,6 +21,14 @@ class OutcomeController extends Controller
         }
         if (session('daftarPengeluaran')) {
             $validated['details'] = $cart;
+            $productId = array_keys($cart);
+            foreach($productId as $id){
+                $product = Product::where('id', $id)->first();
+    
+                Product::where('id',$id)->update([
+                    'inStock' => $product['inStock'] + $cart[$id]['quantity']
+                ]);
+            }
         }
         $validated['status'] = $r->status;
         $validated['isPemasukan'] = 0;
@@ -28,13 +36,6 @@ class OutcomeController extends Controller
         $validated['keuntungan'] = 0;
 
         Entry::create($validated);
-        foreach($productId as $id){
-            $product = Product::where('id', $id)->first();
-
-            Product::where('id',$id)->update([
-                'inStock' => $product['inStock'] + $cart[$id]['quantity']
-            ]);
-        }
 
         session()->forget('daftarPengeluaran');
         return redirect('/pembukuan')->with('Message', 'Berhasil dimasukkan');

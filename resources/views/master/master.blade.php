@@ -25,36 +25,51 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class='sidebar-title'>Main Menu</li>
-                        <li class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('dashboard') }}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item {{ request()->routeIs('*category*') ? 'active' : '' }}">
-                            <a href="{{ route('category.list') }}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Kategori</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ request()->routeIs('*unit*') ? 'active' : '' }}">
-                            <a href="{{ route('unit.list') }}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Satuan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ request()->routeIs('*product*') ? 'active' : '' }}">
-                            <a href="{{ route('product.list') }}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Produk</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ request()->routeIs('*pembukuan*') ? 'active' : '' }}">
-                            <a href="{{ route('pembukuan.list') }}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Pembukuan</span>
-                            </a>
-                        </li>
+                        @if(Auth::user()->hasRole('admin'))
+                            <li class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                                <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item {{ request()->routeIs('*category*') ? 'active' : '' }}">
+                                <a href="{{ route('category.list') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Kategori</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ request()->routeIs('*unit*') ? 'active' : '' }}">
+                                <a href="{{ route('unit.list') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Satuan</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ request()->routeIs('*product*') ? 'active' : '' }}">
+                                <a href="{{ route('product.list') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Produk</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ request()->routeIs('*pembukuan*') ? 'active' : '' }}">
+                                <a href="{{ route('pembukuan.list') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Pembukuan</span>
+                                </a>
+                            </li>
+                        @elseif(Auth::user()->hasRole('user'))
+                            <li class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                                <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Kasir</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class='sidebar-link'>
+                                    <i data-feather="home" width="20"></i>
+                                    <span>Daftar Order</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

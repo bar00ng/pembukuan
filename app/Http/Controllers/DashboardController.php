@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -11,7 +12,8 @@ class DashboardController extends Controller
         if (Auth::user()->hasRole('admin')) {
             return view('dashboard');
         } elseif (Auth::user()->hasRole('user')) {
-            return view('kasir.dashboard');
+            $products = Product::get();
+            return view('kasir.dashboard',['products' => $products]);
         }
     }
 }

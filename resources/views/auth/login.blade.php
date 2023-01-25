@@ -29,7 +29,7 @@
                             <div class="position-relative">
                                 <input type="password" class="form-control" id="password" name="password">
                                 <div class="form-control-icon">
-                                    <i data-feather="lock"></i>
+                                    <i data-feather="lock" class="text-black"></i>
                                 </div>
                             </div>
                         </div>

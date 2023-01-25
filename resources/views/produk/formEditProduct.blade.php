@@ -12,7 +12,7 @@
     <nav aria-label="breadcrumb" class='breadcrumb-header text-right'>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('product.list') }}">Produk</a></li>
-            <li class="breadcrumb-item active"><a href="#">Form Edit</a></li>
+            <li class="breadcrumb-item active"><a href="#">Edit Product</a></li>
         </ol>
     </nav>
 @endsection

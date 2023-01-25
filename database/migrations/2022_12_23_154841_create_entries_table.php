@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('hargaModal');
             $table->integer('keuntungan');
             $table->boolean('isPemasukan'); // 1 == PEMASUKAN | 2 == PENGELUARAN
+            $table->boolean('isOrder')->nullable(); // 1 == PEMASUKAN | 2 == PENGELUARAN
             $table->boolean('status')->default(1); // 1 == LUNAS | 0 == TIDAK LUNAS
             $table->text('description')->default('');
             $table->timestamps();

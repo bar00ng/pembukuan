@@ -193,7 +193,7 @@
                                     <div class="form-group">
                                         <label for="">Status</label>
                                         <div class="form-check">
-                                            <input class="" type="radio" name="status" id="" selected value=1 >
+                                            <input class="" type="radio" name="status" id="" checked value=1 >
                                             <label class="" for="">
                                                 Lunas
                                             </label>

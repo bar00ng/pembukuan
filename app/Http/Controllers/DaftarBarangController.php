@@ -7,10 +7,17 @@ use App\Models\Product;
 
 class DaftarBarangController extends Controller
 {
+    public function index($sessionName) {
+        $cart = session()->get($sessionName);
+
+        return view('kasir.keranjangBelanja',['cart' => $cart]);
+    }
+
     // Form Tambah Pemasukan | SESSION_NAME = cart
     // Form Edit Pemasukan | SESSION_NAME = daftarBarang
     // Form Tambah Pengeluaran | SESSION_NAME = daftarPengeluaran
     // Form Edit Pengeluaran | SESSION_NAME = editDaftarPengeluaran
+    // Keranjang Belanja | SESSION_NAME = keranjangBelanja
     public function addToSession($sessionName, $id, $type) {
         $product = Product::findOrFail($id);
 
@@ -32,7 +39,7 @@ class DaftarBarangController extends Controller
         }
 
         session()->put($sessionName,$cart);
-        return back();
+        return back()->with('Message', 'Barang berhasil dimasukkan');
     }
 
     public function updateFromSession(Request $r, $sessionName, $type) {

@@ -12,7 +12,7 @@
 <nav aria-label="breadcrumb" class='breadcrumb-header text-right'>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('pembukuan.list') }}">Pembukuan</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('pembukuan.tambahPengeluaran') }}">Form Pengeluaran</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('pembukuan.tambahPengeluaran') }}">Tambah Pengeluaran</a></li>
     </ol>
 </nav>
 @endsection

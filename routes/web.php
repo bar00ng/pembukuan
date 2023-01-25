@@ -9,6 +9,8 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\OutcomeController;
 use App\Http\Controllers\DaftarBarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +33,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/addBarang/{sessionName}/{id}/{type?}', [DaftarBarangController::class, 'addToSession'])->name('addBarang');
     Route::delete('/deleteBarang/{sessionName}',[DaftarBarangController::class, 'removeFromSession'])->name('removeBarang');
     Route::patch('/editBarang/{sessionName}/{type?}', [DaftarBarangController::class, 'updateFromSession'])->name('editBarang');
+
+    Route::get('/cart/{sessionName}', [DaftarBarangController::class, 'index'])->name('cart.list');
+
+    Route::get('/order',[OrderController::class, 'index'])->name('order.list');
+    Route::post('/order/store',[OrderController::class, 'store'])->name('order.store');
+    Route::delete('/order/delete/{id}',[OrderController::class, 'delete'])->name('order.delete');
+    Route::get('/order/edit/{id}',[OrderController::class, 'editForm'])->name('order.form.edit');
+    Route::patch('/order/edit/{id}',[OrderController::class, 'patch'])->name('order.patch');
 });
 
 Route::middleware('auth')->group(function () {
@@ -69,6 +79,13 @@ Route::group(['middleware' => ['auth','role:admin']], function() {
     Route::post('/pembukuan/add/pengeluaran',[OutcomeController::class, 'store'])->name('outcome.store');
     Route::get('/pembukuan/edit/pengeluaran/{id}',[PembukuanController::class, 'formEditPengeluaran'])->name('pembukuan.editPengeluaran');
     Route::patch('/pembukuan/edit/pengeluaran/{id}', [OutcomeController::class, 'patch'])->name('outcome.patch');
+
+    Route::get('/user',[UserController::class, 'index'])->name('user.list');
+    Route::get('/user/tambah',[UserController::class, 'tampilFormTambah'])->name('user.form.tambah');
+    Route::post('/user/tambah',[UserController::class, 'store'])->name('user.store');
+    Route::get('/user/edit/{id}',[UserController::class, 'tampilFormEdit'])->name('user.form.edit');
+    Route::patch('/user/edit/{id}',[UserController::class, 'patch'])->name('user.patch');
+    Route::delete('/user/{id}',[UserController::class, 'delete'])->name('user.delete');
 });
 
 

@@ -32,8 +32,8 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="#" class='sidebar-link'>
+                            <li class="sidebar-item {{ request()->routeIs('*user*') ? 'active' : '' }}">
+                                <a href="{{ route('user.list') }}" class='sidebar-link'>
                                     <i data-feather="users" width="20"></i>
                                     <span>Daftar Kasir</span>
                                 </a>
@@ -69,8 +69,8 @@
                                     <span>Kasir</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="#" class='sidebar-link'>
+                            <li class="sidebar-item {{ request()->routeIs('*order*') ? 'active' : '' }}">
+                                <a href="{{ route('order.list') }}" class='sidebar-link'>
                                     <i data-feather="list" width="20"></i>
                                     <span>Daftar Order</span>
                                 </a>
@@ -91,6 +91,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+                        @if (Auth::user()->hasRole('user'))
+                        <li class="nav-icon">
+                            <a href="{{ route('cart.list', ['sessionName' => 'keranjangBelanja']) }}" class="nav-link nav-link-lg nav-link-user">
+                                <div class="d-lg-inline-block">
+                                    <i data-feather="shopping-cart" class="w-125"></i>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
                         <li class="dropdown">
                             <a href="#" data-bs-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">

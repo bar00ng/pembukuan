@@ -16,7 +16,8 @@ class Entry extends Model
         'status',
         'details',
         'description',
-        'isPemasukan'
+        'isPemasukan',
+        'isOrder'
     ];
 
     protected $casts = [
